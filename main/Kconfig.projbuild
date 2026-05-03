@@ -1,0 +1,35 @@
+menu "IPMA Monitor Configuration"
+
+config IPMA_WIFI_SSID
+    string "Wi-Fi SSID"
+    default "SSID"
+    help
+        SSID used to connect the device to the network.
+
+config IPMA_WIFI_PASSWORD
+    string "Wi-Fi password"
+    default "password"
+    help
+        Password for the configured Wi-Fi network.
+
+config IPMA_WIFI_MAX_RETRY
+    int "Wi-Fi reconnect attempts"
+    range 1 20
+    default 5
+    help
+        Number of connection retries before the app reports failure.
+
+config IPMA_MONITOR_DICO
+    string "Concelho DICO"
+    default "0313"
+    help
+        DICO identifier used to select the concelho inside the IPMA response.
+
+config IPMA_MONITOR_HTTP_TIMEOUT_MS
+    int "HTTP timeout (ms)"
+    range 1000 30000
+    default 10000
+    help
+        HTTP client timeout used for the IPMA request.
+
+endmenu
