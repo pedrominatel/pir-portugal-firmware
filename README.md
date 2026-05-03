@@ -29,3 +29,31 @@ Este firmware obtém os dados de Perigo de Incêndio Rural através da API públ
 
 - **API base URL:** `https://api.ipma.pt/open-data/`
 - **Documentação:** [https://api.ipma.pt/](https://api.ipma.pt/)
+
+## Scaffold atual
+
+O repositório inclui um projeto base para **ESP-IDF 6.0** com alvo **ESP32-C6** que:
+
+- liga-se por Wi-Fi em modo STA
+- faz um `GET` ao endpoint `rcm-d0.json`
+- procura um concelho pelo campo `DICO`
+- extrai `dataPrev`, `dataRun`, `fileDate`, `latitude`, `longitude` e `rcm`
+- traduz o código `rcm` para uma descrição legível
+
+### Configuração
+
+Os parâmetros principais são definidos via `menuconfig`:
+
+- `IPMA_WIFI_SSID`
+- `IPMA_WIFI_PASSWORD`
+- `IPMA_MONITOR_DICO`
+- `IPMA_MONITOR_HTTP_TIMEOUT_MS`
+
+### Build
+
+```sh
+export IDF_PATH=$HOME/esp/v6.0/esp-idf
+. $IDF_PATH/export.sh
+idf.py set-target esp32c6
+idf.py build
+```
